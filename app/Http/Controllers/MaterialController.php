@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 class MaterialController extends Controller
 {
-    /**
+      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return 43443;
+        $datos = Material::all();
+
+        return view('material.index', compact('datos'));
     }
 
     /**
@@ -24,7 +26,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('material.create');
     }
 
     /**
@@ -35,51 +37,61 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validated();
+       
+        $datos = new Material();
+        $datos->nombre = $request->nombre;
+        $datos->email = $request->email;
+        $datos->save();
+
+        return redirect('/materiales')->with('success', 'Datos guardados!');
+  
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Material $material)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Material  $material
+     * @param  \App\Material  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Material $material)
+    public function edit(Request $request,$id)
     {
-        //
+        $datos = Material::find($id);
+        return view('material.edit', compact('datos')); 
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Material  $material
+     * @param  \App\Material  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Material $material)
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $datos = Material::find($id);
+        $datos->nombre = $request->nombre;
+        $datos->email = $request->email;
+        $datos->save();
+
+        return redirect('/materiales')->with('success', 'Datos guardados!');
+  
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Material  $material
+     * @param  \App\Material  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Material $material)
+    public function destroy($id)
     {
-        //
+        $datos = Material::find($id);
+        $datos->delete();
+
+        return redirect('/materiales')->with('success', 'Datos guardados!');
     }
 }

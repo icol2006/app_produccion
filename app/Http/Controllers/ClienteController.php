@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClienteStoreRequest;
 
 class ClienteController extends Controller
 {
@@ -14,8 +15,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        dd("asdda");
-        return view('welcome');
+        $datos = Cliente::all();
+
+        return view('cliente.index', compact('datos'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.create');
     }
 
     /**
@@ -34,9 +36,17 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteStoreRequest $request)
     {
-        //
+        $validated = $request->validated();
+       
+        $datos = new Cliente();
+        $datos->nombre = $request->nombre;
+        $datos->email = $request->email;
+        $datos->save();
+
+        return redirect('/clientes')->with('success', 'Datos guardados!');
+  
     }
 
     /**
@@ -56,9 +66,10 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit(Request $request,$id)
     {
-        //
+        $datos = Cliente::find($id);
+        return view('cliente.edit', compact('datos')); 
     }
 
     /**
@@ -68,9 +79,17 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(ClienteStoreRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+
+        $datos = Cliente::find($id);
+        $datos->nombre = $request->nombre;
+        $datos->email = $request->email;
+        $datos->save();
+
+        return redirect('/clientes')->with('success', 'Datos guardados!');
+  
     }
 
     /**
@@ -79,8 +98,11 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+
+        return redirect('/clientes')->with('success', 'Datos guardados!');
     }
 }

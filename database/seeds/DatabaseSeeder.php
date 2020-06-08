@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         
-        DB::table('clientes')->truncate();
+        DB::table('cliente')->truncate();
         DB::table('tipo_servicio')->truncate();
         DB::table('material')->truncate();
         DB::table('estatus')->truncate();
@@ -24,16 +24,16 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
 
         //Clientes
-        DB::table('clientes')->insert(['nombre' => "PRINTPACK", 'email' => "PRINTPACK@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "SERGIO MARTINEZ", 'email' => "SERGIO@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "PADI", 'email' => "PADI@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "ETIQUETAS JALISCO", 'email' => "JALISCO@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "PLASTICOL", 'email' => "PLASTICOL@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "POLIFLEX", 'email' => "POLIFLEX@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "CRISTINA MARTINEZ", 'email' => "CRISTINAMARTINEZ@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "EMPAQUES THERMOFORMADOS", 'email' => "EMPAQUESTHERMOFORMADOSemail", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "SOLUCIONES SUSTENTABLES", 'email' => "SOLUCIONESSUSTENTABLES@gmail.com", 'telefono' => "", 'direccion' => ""]);
-        DB::table('clientes')->insert(['nombre' => "POLIPACK", 'email' => "POLIPACK@gmail.com", 'telefono' => "", 'direccion' => ""]);
+        DB::table('cliente')->insert(['nombre' => "PRINTPACK", 'email' => "PRINTPACK@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "SERGIO MARTINEZ", 'email' => "SERGIO@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "PADI", 'email' => "PADI@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "ETIQUETAS JALISCO", 'email' => "JALISCO@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "PLASTICOL", 'email' => "PLASTICOL@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "POLIFLEX", 'email' => "POLIFLEX@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "CRISTINA MARTINEZ", 'email' => "CRISTINAMARTINEZ@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "EMPAQUES THERMOFORMADOS", 'email' => "EMPAQUESTHERMOFORMADOSemail"]);
+        DB::table('cliente')->insert(['nombre' => "SOLUCIONES SUSTENTABLES", 'email' => "SOLUCIONESSUSTENTABLES@gmail.com"]);
+        DB::table('cliente')->insert(['nombre' => "POLIPACK", 'email' => "POLIPACK@gmail.com"]);
 
         //Tipo servicio
         DB::table('tipo_servicio')->insert(['nombre' => "REVISIÓN", 'descripcion' => "",]);

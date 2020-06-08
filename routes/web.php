@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('produccion_rodillos','ProduccionRodilloController');
-Route::resource('produccion_metal','ProduccionMetalController');
+Route::resource('produccion_metales','ProduccionMetalController');
 Route::resource('clientes','ClienteController');
 Route::resource('tipo_servicios','TipoServicioController');
 Route::resource('materiales','MaterialController');
-Route::resource('tipo_material','TipoMaterialController');
+Route::resource('tipo_materiales','TipoMaterialController');
+Route::resource('productos','ProductoController');
+Route::resource('tareas','TareaController');
 
 Route::get('/', function () {
     return view('welcome');

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\TipoServicio;
+use App\Producto;
 use Illuminate\Http\Request;
 
-class TipoServicioController extends Controller
+class ProductoController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class TipoServicioController extends Controller
      */
     public function index()
     {
-        $datos = TipoServicio::all();
+        $datos = Producto::all();
 
-        return view('tipo_servicio.index', compact('datos'));
+        return view('producto.index', compact('datos'));
     }
 
     /**
@@ -26,7 +26,7 @@ class TipoServicioController extends Controller
      */
     public function create()
     {
-        return view('tipo_servicio.create');
+        return view('producto.create');
     }
 
     /**
@@ -39,12 +39,12 @@ class TipoServicioController extends Controller
     {
         $validated = $request->validated();
        
-        $datos = new TipoServicio();
+        $datos = new Producto();
         $datos->nombre = $request->nombre;
         $datos->email = $request->email;
         $datos->save();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
+        return redirect('/productos')->with('success', 'Datos guardados!');
   
     }
 
@@ -52,45 +52,46 @@ class TipoServicioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TipoServicio  $cliente
+     * @param  \App\Producto  $cliente
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request,$id)
     {
-        $datos = TipoServicio::find($id);
-        return view('tipo_servicio.edit', compact('datos')); 
+        $datos = Producto::find($id);
+        return view('producto.edit', compact('datos')); 
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TipoServicio  $cliente
+     * @param  \App\Producto  $cliente
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $validated = $request->validated();
 
-        $datos = TipoServicio::find($id);
+        $datos = Producto::find($id);
         $datos->nombre = $request->nombre;
         $datos->email = $request->email;
         $datos->save();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
+        return redirect('/productos')->with('success', 'Datos guardados!');
   
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TipoServicio  $cliente
+     * @param  \App\Producto  $cliente
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $datos = TipoServicio::find($id);
+        $datos = Producto::find($id);
         $datos->delete();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
-    }}
+        return redirect('/productos')->with('success', 'Datos guardados!');
+    }
+}

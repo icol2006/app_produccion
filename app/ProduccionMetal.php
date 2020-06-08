@@ -10,7 +10,7 @@ class ProduccionMetal extends Model
 
     protected $fillable = [
         'id_cliente','id_tipo_servicio','id_material','id_tipo_material','descripcion',
-        'piezas_fabricar','piezas_producidas','horas_teoricas','piezas_reales','fecha_pedido date ',
+        'piezas_fabricar','horas_teoricas','piezas_reales','fecha_pedido date ',
         'dias_transcurridos','medidas_1mm','medidas_2mm','medidas_largo','medidas_ancho',
         'medidas_espeso','id_estatus'
     ];
@@ -23,14 +23,6 @@ class ProduccionMetal extends Model
 
     function tipoServicio() {
         return $this->hasOne(TipoServicio::class, 'id');
-    }
-
-    function material() {
-        return $this->hasOne(Material::class, 'id');
-    }
-
-    function tipoMaterial() {
-        return $this->hasOne(TipoMaterial::class, 'id');
     }
 
     function estatus() {
