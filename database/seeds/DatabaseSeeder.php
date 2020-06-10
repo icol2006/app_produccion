@@ -17,8 +17,7 @@ class DatabaseSeeder extends Seeder
         DB::table('cliente')->truncate();
         DB::table('tipo_servicio')->truncate();
         DB::table('material')->truncate();
-        DB::table('estatus')->truncate();
-        DB::table('tipo_material')->truncate();        
+        DB::table('tipo_producto')->truncate();        
         
 
         // $this->call(UserSeeder::class);
@@ -60,13 +59,10 @@ class DatabaseSeeder extends Seeder
         DB::table('material')->insert(['nombre' => "APLICACIÓN UV", 'descripcion' => "",]);
 
         //Tipo Material
-        DB::table('tipo_material')->insert(['nombre' => "RODILLO", 'descripcion' => "",]);
-        DB::table('tipo_material')->insert(['nombre' => "RUEDA", 'descripcion' => "",]);
-        DB::table('tipo_material')->insert(['nombre' => "FUNDA", 'descripcion' => "",]);
+        DB::table('tipo_producto')->insert(['nombre' => "RODILLO", 'descripcion' => "",]);
+        DB::table('tipo_producto')->insert(['nombre' => "RUEDA", 'descripcion' => "",]);
+        DB::table('tipo_producto')->insert(['nombre' => "FUNDA", 'descripcion' => "",]);
 
-        //Estatus
-        DB::table('estatus')->insert(['nombre' => "NO INICIADO", 'descripcion' => "",]);
-        DB::table('estatus')->insert(['nombre' => "TERMINADO", 'descripcion' => "",]);
-        DB::table('estatus')->insert(['nombre' => "CANCELADO", 'descripcion' => "",]);
+
     }
 }

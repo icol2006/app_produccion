@@ -9,7 +9,7 @@ class Producto extends Model
     protected $table = 'producto';
 
     protected $fillable = [
-        'nombre', 'id_material', 'id_tipo_material'
+        'nombre', 'id_material', 'id_tipo_producto'
     ];
 
     protected $primaryKey = 'id';
@@ -18,7 +18,7 @@ class Producto extends Model
         return $this->hasOne(Material::class, 'id');
     }
 
-    function tipoMaterial() {
-        return $this->hasOne(TipoMaterial::class, 'id');
+    function tipoProducto() {
+        return $this->hasOne(TipoProducto::class, 'id');
     }
 }

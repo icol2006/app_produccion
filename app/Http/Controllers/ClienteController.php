@@ -36,9 +36,8 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClienteStoreRequest $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
        
         $datos = new Cliente();
         $datos->nombre = $request->nombre;
@@ -69,6 +68,7 @@ class ClienteController extends Controller
     public function edit(Request $request,$id)
     {
         $datos = Cliente::find($id);
+        
         return view('cliente.edit', compact('datos')); 
     }
 
@@ -79,9 +79,9 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(ClienteStoreRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+       // $validated = $request->validated();
 
         $datos = Cliente::find($id);
         $datos->nombre = $request->nombre;
