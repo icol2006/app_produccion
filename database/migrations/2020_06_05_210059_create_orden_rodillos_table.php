@@ -18,7 +18,7 @@ class CreateOrdenRodillosTable extends Migration
             $table->integer('id_cliente')->unsigned();
             $table->integer('id_tipo_servicio')->unsigned();
             $table->integer('id_producto')->unsigned();
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->integer('piezas_fabricar');
             $table->date('fecha_pedido');
             $table->date('fecha_comprom');

@@ -1,13 +1,12 @@
-@extends('master')
+@extends('dashboard')
 
 @section('content')
-
 
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="card card-box">
-            <div class="card-head">
-                <header>Crear Cliente</header>
+            <div class="card-header">
+                <h3 class="card-title">CREAR TIPO PRODUCTO</h3>
             </div>
             <div class="card-body " id="bar-parent">
                 @if ($errors->any())
@@ -20,25 +19,16 @@
                 </div>
                 <br />
                 @endif
-                <form method="post" action="{{ route('clientes.store') }}">
+                <form method="post" action="{{ route('tipos_productos.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="cli_nombre">Nombre</label>
-                        <input type="text" class="form-control" name="cli_nombre" placeholder="Nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="" required>
                     </div>
                     <div class="form-group">
-                        <label for="cli_ciudad">Ciudad</label>
-                        <input type="text" class="form-control" name="cli_ciudad" placeholder="Ciudad">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" value="">
                     </div>
-                    <div class="form-group">
-                        <label for="cli_direccion">Direccion</label>
-                        <input type="text" class="form-control" name="cli_direccion" placeholder="Direccion">
-                    </div>
-                    <div class="form-group">
-                        <label for="cli_telefono">Telefono</label>
-                        <input type="number" class="form-control" name="cli_telefono" placeholder="Telefono">
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Aceptar</button>
                 </form>
             </div>

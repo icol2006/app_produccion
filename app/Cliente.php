@@ -9,7 +9,8 @@ class Cliente extends Model
     protected $table = 'cliente';
 
     protected $fillable = [
-        'nombre', 'email'
+        'nombre', 
+        'email'
     ];
 
     protected $primaryKey = 'id';

@@ -9,7 +9,8 @@ class TipoServicio extends Model
     protected $table = 'tipo_servicio';
 
     protected $fillable = [
-        'nombre', 'descripcion'
+        'nombre', 
+        'descripcion'
     ];
 
     protected $primaryKey = 'id';

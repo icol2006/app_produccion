@@ -37,14 +37,14 @@ class TipoProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
        
-        $datos = new TipoMaterial();
+        $datos = new TipoProducto();
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
-        return redirect('/tipo_materiales')->with('success', 'Datos guardados!');
+        return redirect('/tipos_productos')->with('success', 'Datos guardados!');
   
     }
 
@@ -70,14 +70,14 @@ class TipoProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
         $datos = TipoProducto::find($id);
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
-        return redirect('/tipo_materiales')->with('success', 'Datos guardados!');
+        return redirect('/tipos_productos')->with('success', 'Datos guardados!');
   
     }
 
@@ -92,6 +92,6 @@ class TipoProductoController extends Controller
         $datos = TipoProducto::find($id);
         $datos->delete();
 
-        return redirect('/tipo_materiales')->with('success', 'Datos guardados!');
+        return redirect('/tipos_productos')->with('success', 'Datos guardados!');
     }
 }

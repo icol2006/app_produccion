@@ -16,6 +16,8 @@ class OrdenMetalController extends Controller
     {
         $datos = OrdenMetal::all();
 
+        //dd($datos->first()->cliente->nombre);
+
         return view('orden_metal.index', compact('datos'));
     }
 
@@ -37,11 +39,24 @@ class OrdenMetalController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+       // $validated = $request->validated();
        
         $datos = new OrdenMetal();
-        $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->id_cliente = $request->id_cliente;
+        $datos->id_tipo_servicio = $request->id_tipo_servicio;
+        $datos->id_producto = $request->id_producto;
+        $datos->descripcion = $request->descripcion;
+        $datos->piezas_fabricar = $request->piezas_fabricar;
+        $datos->horas_teoricas = $request->horas_teoricas;
+        $datos->piezas_reales = $request->piezas_reales;
+        $datos->fecha_pedido = $request->fecha_pedido;
+        $datos->dias_transcurridos = $request->dias_transcurridos;
+        $datos->medidas_1mm = $request->medidas_1mm;
+        $datos->medidas_2mm = $request->medidas_2mm;
+        $datos->medidas_largo = $request->medidas_largo;
+        $datos->medidas_ancho = $request->medidas_ancho;
+        $datos->medidas_espeso = $request->medidas_espeso;
+        $datos->estatus = $request->estatus;
         $datos->save();
 
         return redirect('/ordenes_metales')->with('success', 'Datos guardados!');
@@ -70,11 +85,24 @@ class OrdenMetalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+       // $validated = $request->validated();
 
         $datos = OrdenMetal::find($id);
-        $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->id_cliente = $request->id_cliente;
+        $datos->id_tipo_servicio = $request->id_tipo_servicio;
+        $datos->id_producto = $request->id_producto;
+        $datos->descripcion = $request->descripcion;
+        $datos->piezas_fabricar = $request->piezas_fabricar;
+        $datos->horas_teoricas = $request->horas_teoricas;
+        $datos->piezas_reales = $request->piezas_reales;
+        $datos->fecha_pedido = $request->fecha_pedido;
+        $datos->dias_transcurridos = $request->dias_transcurridos;
+        $datos->medidas_1mm = $request->medidas_1mm;
+        $datos->medidas_2mm = $request->medidas_2mm;
+        $datos->medidas_largo = $request->medidas_largo;
+        $datos->medidas_ancho = $request->medidas_ancho;
+        $datos->medidas_espeso = $request->medidas_espeso;
+        $datos->estatus = $request->estatus;
         $datos->save();
 
         return redirect('/ordenes_metales')->with('success', 'Datos guardados!');

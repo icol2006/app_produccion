@@ -9,7 +9,8 @@ class TipoProducto extends Model
     protected $table = 'tipo_producto';
 
     protected $fillable = [
-        'nombre', 'descripcion'
+        'nombre', 
+        'descripcion'
     ];
 
     protected $primaryKey = 'id';

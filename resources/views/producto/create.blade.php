@@ -1,13 +1,12 @@
-@extends('master')
+@extends('dashboard')
 
 @section('content')
-
 
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="card card-box">
-            <div class="card-head">
-                <header>Crear Cliente</header>
+            <div class="card-header">
+                <h3 class="card-title">CREAR PRODUCTO</h3>
             </div>
             <div class="card-body " id="bar-parent">
                 @if ($errors->any())
@@ -20,25 +19,21 @@
                 </div>
                 <br />
                 @endif
-                <form method="post" action="{{ route('clientes.store') }}">
+                <form method="post" action="{{ route('productos.store') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="cli_nombre">Nombre</label>
-                        <input type="text" class="form-control" name="cli_nombre" placeholder="Nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="" required>
                     </div>
                     <div class="form-group">
-                        <label for="cli_ciudad">Ciudad</label>
-                        <input type="text" class="form-control" name="cli_ciudad" placeholder="Ciudad">
+                        <label for="id_material">Material</label>
+                        <input type="text" class="form-control" name="id_material" placeholder="Material" value="" required>
                     </div>
                     <div class="form-group">
-                        <label for="cli_direccion">Direccion</label>
-                        <input type="text" class="form-control" name="cli_direccion" placeholder="Direccion">
+                        <label for="id_tipo_producto">Tipo Producto</label>
+                        <input type="text" class="form-control" name="id_tipo_producto" placeholder="Tipo Producto" value="" required>
                     </div>
-                    <div class="form-group">
-                        <label for="cli_telefono">Telefono</label>
-                        <input type="number" class="form-control" name="cli_telefono" placeholder="Telefono">
-                    </div>
-
+           
                     <button type="submit" class="btn btn-primary">Aceptar</button>
                 </form>
             </div>

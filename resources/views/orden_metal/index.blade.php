@@ -1,31 +1,35 @@
-@extends('master')
+@extends('dashboard')
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <div class="card card-topline-red">
-            <div class="card-head">
-                <header>LISTADO CLIENTES</header>
-           
-            </div>
-            <div class="card-body ">
-                <div class="row p-b-20">
-                    <div class="col-md-6 col-sm-6 col-6">
-                        <div class="btn-group">
-                            <a href="{{ route('clientes.create') }}" class="btn btn-info">Agregar<i
-                                    class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">LISTADO DE ORDENES METAL</h3>
 
-                <table class="table table-striped table-bordered table-hover table-checkable order-column full-width"
-                    id="example3">
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <a href="{{ route('ordenes_metales.create') }}" class="btn bg-gradient-primary boton-agregar-listado">Agregar Registro <i class="fa fa-plus"></i></a>
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Cod</th>
-                            <th>Nombre</th>
-                            <th>Ciudad</th>
-                            <th>Telefono</th>
+                            <th>Cliente</th>
+                            <th>Tipo de servicio</th>
+                            <th>Producto</th>
+                            <th>Descripcion</th>
+                            <th>Piezas Fabricar</th>
+                            <th>Horas Teoricas</th>
+                            <th>Piezas Reales</th>
+                            <th>Fecha Pedido</th>
+                            <th>Dias Transcurridos</th>
+                            <th>Medidas_1mm</th>
+                            <th>Medidas_2mm</th>
+                            <th>Medidas_largo</th>
+                            <th>Medidas_ancho</th>
+                            <th>Medidas Espeso</th>
+                            <th>Estatus</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -33,31 +37,43 @@
                     <tbody>
                         @foreach($datos as $dato)
                         <tr class="odd gradeX">
-
-                            <td>{{ $dato->cli_id }}</td>
-                            <td>{{ $dato->cli_nombre }}</td>
-                            <td>{{ $dato->cli_ciudad }}</td>
-                            <td>{{ $dato->cli_telefono }}</td>
-                            <td><a href="{{ route('clientes.edit',$dato->cli_id)}}"><i class="fa fa-pencil"></i></a>
+                            <td>{{ $dato->id }}</td>
+                            <td>{{ $dato->cliente->nombre }}</td>
+                            <td>{{ $dato->tipoServicio->nombre  }}</td>
+                            <td>{{ $dato->producto->nombre }}</td>
+                            <td>{{ $dato->descripcion }}</td>
+                            <td>{{ $dato->piezas_fabricar }}</td>
+                            <td>{{ $dato->horas_teoricas }}</td>
+                            <td>{{ $dato->piezas_reales }}</td>
+                            <td>{{ $dato->fecha_pedido }}</td>
+                            <td>{{ $dato->dias_transcurridos }}</td>
+                            <td>{{ $dato->medidas_1mm }}</td>
+                            <td>{{ $dato->medidas_2mm }}</td>
+                            <td>{{ $dato->medidas_largo }}</td>
+                            <td>{{ $dato->medidas_ancho }}</td>
+                            <td>{{ $dato->medidas_espeso }}</td>
+                            <td>{{ $dato->estatus }}</td>
+                            <td>
+                                <a href="{{ route('ordenes_metales.edit',$dato->id)}}"><i
+                                        class="fa fa-pen icono-editar"></i></a>
                             </td>
                             <td>
-                                <form action="{{ route('clientes.destroy', $dato->cli_id)}}" method="post">
+                                <form action="{{ route('ordenes_metales.destroy', $dato->id)}}" method="post">
                                     {{ csrf_field() }}
                                     @method('DELETE')
-                                    <button class="fa fa-trash-o" type="submit"></button>
-
+                                    <button class="fa fa-trash" type="submit"></button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
+    <!-- /.col -->
 </div>
-
-
-
+<!-- /.row -->
 @endsection

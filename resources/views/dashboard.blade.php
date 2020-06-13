@@ -90,27 +90,45 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <a href="{{ route('materiales.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Materiales</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ordenes_metales.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Ordenes metales</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('ordenes_rodillos.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Ordenes rodillos</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('procesos_ordenes.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Procesos Ordenes</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('productos.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p>Productos</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <a href="{{ route('tipos_productos.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p>Tipos Productos</p>
+                <p>Tipos de productos</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+              <a href="{{ route('tipos_servicios.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p>Ordenes Metales</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Ordenes rodillos</p>
+                <p>Tipos de servicios</p>
               </a>
             </li>
 

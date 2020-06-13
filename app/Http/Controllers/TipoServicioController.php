@@ -37,14 +37,14 @@ class TipoServicioController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
        
         $datos = new TipoServicio();
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
+        return redirect('/tipos_servicios')->with('success', 'Datos guardados!');
   
     }
 
@@ -70,14 +70,14 @@ class TipoServicioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
         $datos = TipoServicio::find($id);
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
+        return redirect('/tipos_servicios')->with('success', 'Datos guardados!');
   
     }
 
@@ -92,5 +92,5 @@ class TipoServicioController extends Controller
         $datos = TipoServicio::find($id);
         $datos->delete();
 
-        return redirect('/tipo_servicios')->with('success', 'Datos guardados!');
+        return redirect('/tipos_servicios')->with('success', 'Datos guardados!');
     }}

@@ -16,7 +16,7 @@ class CreateProcesoOrdenTable extends Migration
         Schema::create('proceso_orden', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->string('estatus');
             $table->string('operador');
             $table->integer('piezas_terminadas');

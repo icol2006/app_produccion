@@ -16,6 +16,9 @@ class ProductoController extends Controller
     {
         $datos = Producto::all();
 
+       //$datos= $datos->first()->tipoProducto->nombre;
+
+
         return view('producto.index', compact('datos'));
     }
 
@@ -37,11 +40,12 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
        
         $datos = new Producto();
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->save();
 
         return redirect('/productos')->with('success', 'Datos guardados!');
@@ -70,11 +74,12 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
 
         $datos = Producto::find($id);
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->save();
 
         return redirect('/productos')->with('success', 'Datos guardados!');

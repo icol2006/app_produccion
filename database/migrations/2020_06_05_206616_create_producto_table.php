@@ -16,8 +16,8 @@ class CreateProductoTable extends Migration
         Schema::create('producto', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('id_material')->unsigned();
-            $table->integer('id_tipo_producto')->unsigned();
+            $table->integer('id_material')->unsigned()->nullable();
+            $table->integer('id_tipo_producto')->unsigned()->nullable();
             $table->foreign('id_material')->references('id')->on('material')->onDelete('restrict');
             $table->foreign('id_tipo_producto')->references('id')->on('tipo_producto')->onDelete('restrict');
             $table->timestamps();

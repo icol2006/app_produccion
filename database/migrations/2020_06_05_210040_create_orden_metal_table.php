@@ -15,9 +15,9 @@ class CreateOrdenMetalTable extends Migration
     {
         Schema::create('orden_metal', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_cliente')->unsigned();
-            $table->integer('id_tipo_servicio')->unsigned();
-            $table->integer('id_producto')->unsigned();
+            $table->integer('id_cliente')->unsigned()->nullable();
+            $table->integer('id_tipo_servicio')->unsigned()->nullable();
+            $table->integer('id_producto')->unsigned()->nullable();
             $table->string('descripcion');
             $table->integer('piezas_fabricar');
             $table->integer('horas_teoricas');
@@ -29,7 +29,7 @@ class CreateOrdenMetalTable extends Migration
             $table->integer('medidas_largo');
             $table->integer('medidas_ancho');
             $table->integer('medidas_espeso');
-            $table->string('estatu');
+            $table->string('estatus');
             $table->foreign('id_cliente')->references('id')->on('cliente')->onDelete('restrict');
             $table->foreign('id_tipo_servicio')->references('id')->on('tipo_servicio')->onDelete('restrict');
             $table->foreign('id_producto')->references('id')->on('producto')->onDelete('restrict');

@@ -2,30 +2,22 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <div class="card card-topline-red">
-            <div class="card-head">
-                <header>LISTADO PRODUCTOS</header>
-           
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">LISTADO DE PRODUCTOS</h3>
+                
             </div>
-            <div class="card-body ">
-                <div class="row p-b-20">
-                    <div class="col-md-6 col-sm-6 col-6">
-                        <div class="btn-group">
-                            <a href="{{ route('materiales.create') }}" class="btn btn-info">Agregar<i
-                                    class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <table class="table table-striped table-bordered table-hover table-checkable order-column full-width"
-                    id="example3">
+            <!-- /.card-header -->
+            <div class="card-body">
+                <a href="{{ route('productos.create') }}"  class="btn bg-gradient-primary boton-agregar-listado">Agregar Registro <i class="fa fa-plus"></i></a>
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Cod</th>
                             <th>Nombre</th>
                             <th>Material</th>
-                            <th>Tipo Producto</th>
+                            <th>Tipo de Producto</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -36,14 +28,16 @@
 
                             <td>{{ $dato->id }}</td>
                             <td>{{ $dato->nombre }}</td>
-                            <td>{{ $dato->descripcion }}</td>
-                            <td><a href="{{ route('materiales.edit',$dato->cli_id)}}"><i class="fa fa-pencil"></i></a>
+                            <td>{{ $dato->material->nombre }}</td>
+                            <td>{{ $dato->tipoProducto->nombre}}</td>
+                            <td>
+                                <a href="{{ route('productos.edit',$dato->id)}}"><i class="fa fa-pen icono-editar"></i></a>
                             </td>
                             <td>
-                                <form action="{{ route('materiales.destroy', $dato->cli_id)}}" method="post">
+                                <form action="{{ route('productos.destroy', $dato->id)}}" method="post">
                                     {{ csrf_field() }}
                                     @method('DELETE')
-                                    <button class="fa fa-trash-o" type="submit"></button>
+                                    <button class="fa fa-trash" type="submit"></button>
 
                                 </form>
                             </td>
@@ -51,12 +45,12 @@
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
+            <!-- /.card-body -->
         </div>
+        <!-- /.card -->
     </div>
+    <!-- /.col -->
 </div>
-
-
-
+<!-- /.row -->
 @endsection

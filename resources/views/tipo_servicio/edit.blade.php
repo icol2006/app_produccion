@@ -1,11 +1,12 @@
-@extends('master')
+@extends('dashboard')
 
 @section('content')
+
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="card card-box">
-            <div class="card-head">
-                <header>Editar Cliente</header>
+            <div class="card-header">
+                <h3 class="card-title">EDITAR TIPO DE SERVICIO</h3>
             </div>
             <div class="card-body " id="bar-parent">
                 @if ($errors->any())
@@ -18,32 +19,23 @@
                 </div>
                 <br />
                 @endif
-                <form method="post" action="{{ route('clientes.update', $datos->cli_id) }}">
+                <form method="post" action="{{ route('tipos_servicios.update', $datos->id) }}">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
-                        <label for="cli_nombre">Nombre</label>
-                        <input type="text" class="form-control" name="cli_nombre" value="{{ $datos->cli_nombre }}"
-                            placeholder="Nombre">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{  $datos->nombre }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="cli_ciudad">Ciudad</label>
-                        <input type="text" class="form-control" name="cli_ciudad" value="{{ $datos->cli_ciudad }}" placeholder="Ciudad">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" name="descripcion" placeholder="Descripcion" value="{{  $datos->descripcion }}">
                     </div>
-                    <div class="form-group">
-                        <label for="cli_direccion">Direccion</label>
-                        <input type="text" class="form-control" name="cli_direccion" value="{{ $datos->cli_direccion }}" placeholder="Direccion">
-                    </div>
-                    <div class="form-group">
-                        <label for="cli_telefono">Telefono</label>
-                        <input type="number" class="form-control" name="cli_telefono" value="{{ ($datos->cli_telefono) }}" placeholder="Telefono">
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Aceptar</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 @endsection

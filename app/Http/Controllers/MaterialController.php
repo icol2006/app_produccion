@@ -37,11 +37,11 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validated();
+        //$validated = $request->validated();
        
         $datos = new Material();
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
         return redirect('/materiales')->with('success', 'Datos guardados!');
@@ -70,11 +70,11 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validated();
+       // $validated = $request->validated();
 
         $datos = Material::find($id);
         $datos->nombre = $request->nombre;
-        $datos->email = $request->email;
+        $datos->descripcion = $request->descripcion;
         $datos->save();
 
         return redirect('/materiales')->with('success', 'Datos guardados!');
