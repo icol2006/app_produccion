@@ -19,20 +19,30 @@
                 </div>
                 <br />
                 @endif
-                <form method="post" action="{{ route('productos.update', $datos->id) }}">
+                <form method="post" action="{{ route('productos.update', $datos['producto']->id) }}">
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $datos->nombre }}" required>
+                        <input type="text" class="form-control" name="nombre" placeholder="Nombre" value="{{ $datos['producto']->nombre }}" required>
                     </div>
                     <div class="form-group">
                         <label for="id_material">Material</label>
-                        <input type="text" class="form-control" name="id_material" placeholder="Material" value="{{ $datos->id_material }}" required>
+                        <select class="form-control" id='id_material' name='id_material'>
+                            @foreach($datos['materiales'] as $dato )
+                            <option value="{{ $dato->id }}"  {{ $dato->id == $datos['producto']->id_material  ? "selected":"" }}>
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select> 
                     </div>
                     <div class="form-group">
                         <label for="id_tipo_producto">Tipo Producto</label>
-                        <input type="text" class="form-control" name="id_tipo_producto" placeholder="Tipo Producto" value="{{ $datos->id_tipo_producto }}" required>
+                        <select class="form-control" id='id_tipo_producto' name='id_tipo_producto'>
+                            @foreach($datos['tiposProductos'] as $dato )
+                            <option value="{{ $dato->id }}"  {{ $dato->id == $datos['producto']->id_tipo_producto  ? "selected":"" }}>
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select> 
                     </div>
                     <button type="submit" class="btn btn-primary">Aceptar</button>
                 </form>

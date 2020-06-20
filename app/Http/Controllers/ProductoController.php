@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Material;
 use App\Producto;
+use App\TipoProducto;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -29,7 +31,15 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto.create');
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
+
+        $datos = [
+            'materiales'  => $material ,
+            'tiposProductos'   => $tipoProducto,
+        ];
+
+        return view('producto.create', compact('datos'));
     }
 
     /**
@@ -61,7 +71,17 @@ class ProductoController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $datos = Producto::find($id);
+        $producto = Producto::find($id);
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
+
+        $datos = [
+            'materiales'  => $material ,
+            'tiposProductos'   => $tipoProducto,
+            'producto'   => $producto,
+        ];
+
+
         return view('producto.edit', compact('datos')); 
     }
 

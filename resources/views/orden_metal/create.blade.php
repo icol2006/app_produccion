@@ -23,15 +23,30 @@
                     @csrf
                     <div class="form-group col-6">
                         <label for="id_cliente">Cliente</label>
-                        <input type="text" class="form-control" name="id_cliente" placeholder="Cliente" value="" required>
+                        <select class="form-control" id='id_cliente' name='id_cliente'>
+                            @foreach($datos['clientes'] as $dato )
+                            <option value="{{ $dato->id }}" >
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-6">
                         <label for="id_tipo_servicio">Tipo de servicio</label>
-                        <input type="text" class="form-control" name="id_tipo_servicio" placeholder="Tipo de servicio" value="" required>
+                        <select class="form-control" id='id_tipo_servicio' name='id_tipo_servicio'>
+                            @foreach($datos['tiposServicios'] as $dato )
+                            <option value="{{ $dato->id }}">
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select>  
                     </div>
                     <div class="form-group col-6">
                         <label for="id_producto">Producto</label>
-                        <input type="text" class="form-control" name="id_producto" placeholder="Producto" value="" required>
+                        <select class="form-control" id='id_producto' name='id_producto'>
+                            @foreach($datos['productos'] as $dato )
+                            <option value="{{ $dato->id }}">
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select>  
                     </div>
                     <div class="row col-12">
                         <div class="form-group col-4">
@@ -54,7 +69,7 @@
                         </div>
                         <div class="form-group col-4">
                             <label for="fecha_pedido">Fecha pedido</label>
-                            <input type="text" class="form-control" name="fecha_pedido" placeholder="Fecha pedido" value="" required>
+                            <input type="text" class="form-control" name="fecha_pedido" placeholder="Fecha pedido" value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
                         </div>
                         <div class="form-group col-4">
                             <label for="dias_transcurridos">Dias Transcurridos</label>

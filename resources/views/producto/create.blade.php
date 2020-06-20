@@ -27,11 +27,21 @@
                     </div>
                     <div class="form-group">
                         <label for="id_material">Material</label>
-                        <input type="text" class="form-control" name="id_material" placeholder="Material" value="" required>
+                        <select class="form-control" id='id_material' name='id_material'>
+                            @foreach($datos['materiales'] as $dato )
+                            <option value="{{ $dato->id }}">
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select> 
                     </div>
                     <div class="form-group">
                         <label for="id_tipo_producto">Tipo Producto</label>
-                        <input type="text" class="form-control" name="id_tipo_producto" placeholder="Tipo Producto" value="" required>
+                        <select class="form-control" id='id_tipo_producto' name='id_tipo_producto'>
+                            @foreach($datos['tiposProductos'] as $dato )
+                            <option value="{{ $dato->id }}">
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select> 
                     </div>
            
                     <button type="submit" class="btn btn-primary">Aceptar</button>

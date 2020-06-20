@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\OrdenRodillo;
+use App\Producto;
+use App\TipoServicio;
 use Illuminate\Http\Request;
 
 class OrdenRodilloController extends Controller
@@ -26,7 +29,17 @@ class OrdenRodilloController extends Controller
      */
     public function create()
     {
-        return view('orden_rodillo.create');
+        $clientes=Cliente::all();
+        $tipoServicio=TipoServicio::all();
+        $producto=Producto::all();
+
+        $datos = [
+            'clientes'  => $clientes ,
+            'tiposServicios'   => $tipoServicio,
+            'productos'   => $producto,
+        ];
+
+        return view('orden_rodillo.create', compact('datos'));
     }
 
     /**
@@ -45,6 +58,7 @@ class OrdenRodilloController extends Controller
         $datos->id_producto = $request->id_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
+        $datos->fecha_pedido = $request->fecha_pedido;        
         $datos->fecha_comprom = $request->fecha_comprom;
         $datos->fecha_termino_produccion = $request->fecha_termino_produccion;
         $datos->tiempo_respuesta = $request->tiempo_respuesta;
@@ -64,7 +78,18 @@ class OrdenRodilloController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $datos = OrdenRodillo::find($id);
+        $clientes=Cliente::all();
+        $tipoServicio=TipoServicio::all();
+        $producto=Producto::all();
+        $orden = OrdenRodillo::find($id);
+
+        $datos = [
+            'clientes'  => $clientes ,
+            'tiposServicios'   => $tipoServicio,
+            'productos'   => $producto,
+            'orden'   => $orden,
+        ];
+
         return view('orden_rodillo.edit', compact('datos')); 
     }
 

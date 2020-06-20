@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
 use App\OrdenMetal;
+use App\Producto;
+use App\TipoServicio;
 use Illuminate\Http\Request;
 
 class OrdenMetalController extends Controller
@@ -28,7 +31,17 @@ class OrdenMetalController extends Controller
      */
     public function create()
     {
-        return view('orden_metal.create');
+        $clientes=Cliente::all();
+        $tipoServicio=TipoServicio::all();
+        $producto=Producto::all();
+
+        $datos = [
+            'clientes'  => $clientes ,
+            'tiposServicios'   => $tipoServicio,
+            'productos'   => $producto,
+        ];
+
+        return view('orden_metal.create', compact('datos'));
     }
 
     /**
@@ -72,7 +85,18 @@ class OrdenMetalController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $datos = OrdenMetal::find($id);
+        $clientes=Cliente::all();
+        $tipoServicio=TipoServicio::all();
+        $producto=Producto::all();
+        $orden = OrdenMetal::find($id);
+
+        $datos = [
+            'clientes'  => $clientes ,
+            'tiposServicios'   => $tipoServicio,
+            'productos'   => $producto,
+            'orden'   => $orden,
+        ];
+
         return view('orden_metal.edit', compact('datos')); 
     }
 
