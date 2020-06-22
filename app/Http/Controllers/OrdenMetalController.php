@@ -53,7 +53,7 @@ class OrdenMetalController extends Controller
     public function store(Request $request)
     {
        // $validated = $request->validated();
-       
+      
         $datos = new OrdenMetal();
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
@@ -62,7 +62,7 @@ class OrdenMetalController extends Controller
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->horas_teoricas = $request->horas_teoricas;
         $datos->piezas_reales = $request->piezas_reales;
-        $datos->fecha_pedido = $request->fecha_pedido;
+        $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido)); 
         $datos->dias_transcurridos = $request->dias_transcurridos;
         $datos->medidas_1mm = $request->medidas_1mm;
         $datos->medidas_2mm = $request->medidas_2mm;
@@ -72,7 +72,7 @@ class OrdenMetalController extends Controller
         $datos->estatus = $request->estatus;
         $datos->save();
 
-        return redirect('/ordenes_metales')->with('success', 'Datos guardados!');
+        return redirect(route('ordenes_metales.edit',$datos->id))->with('success', 'Datos guardados!');
   
     }
 
@@ -119,7 +119,7 @@ class OrdenMetalController extends Controller
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->horas_teoricas = $request->horas_teoricas;
         $datos->piezas_reales = $request->piezas_reales;
-        $datos->fecha_pedido = $request->fecha_pedido;
+        $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido)); 
         $datos->dias_transcurridos = $request->dias_transcurridos;
         $datos->medidas_1mm = $request->medidas_1mm;
         $datos->medidas_2mm = $request->medidas_2mm;
@@ -129,7 +129,8 @@ class OrdenMetalController extends Controller
         $datos->estatus = $request->estatus;
         $datos->save();
 
-        return redirect('/ordenes_metales')->with('success', 'Datos guardados!');
+        return redirect(route('ordenes_metales.edit',$datos->id))->with('success', 'Datos guardados!');
+       // return redirect('/ordenes_metales')->with('success', 'Datos guardados!');
   
     }
 

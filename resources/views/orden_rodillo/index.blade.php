@@ -38,11 +38,11 @@
                             <td>{{ $dato->tipoServicio->nombre }}</td>
                             <td>{{ $dato->producto->nombre }}</td>
                             <td>{{ $dato->descripcion }}</td>
-                            <td>{{ $dato->piezas_fabricar }}</td>
-                            <td>{{ $dato->fecha_pedido }}</td>
-                            <td>{{ $dato->fecha_comprom }}</td>
-                            <td>{{ $dato->fecha_termino_produccion }}</td>
-                            <td>{{ $dato->tiempo_respuesta }}</td>
+                            <td>{{ $dato->piezas_fabricar }}</td>     
+                            <td>{{ date("d-m-Y",strtotime($dato->fecha_pedido)) }}</td>
+                            <td>{{ date("d-m-Y",strtotime($dato->fecha_comprom)) }}</td>
+                            <td>{{ date("d-m-Y",strtotime($dato->fecha_termino_produccion)) }}</td>
+                            <td>{{ intval((abs( strtotime($dato->fecha_termino_produccion) - strtotime($dato->fecha_pedido)))/86400) }}</td>
                             <td>{{ $dato->estatus }}</td>
                             <td>
                                 <a href="{{ route('ordenes_rodillos.edit',$dato->id)}}"><i class="fa fa-pen icono-editar"></i></a>

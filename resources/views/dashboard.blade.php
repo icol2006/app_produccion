@@ -38,7 +38,7 @@
   <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-dark navbar-primary">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -56,7 +56,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-gray elevation-4">
       <!-- Brand Logo -->
       <a href="index3.html" class="brand-link">
         <img src="{{ asset('dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -82,7 +82,13 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-            <li class="nav-header">DASHBOARD</li>
+            <li class="nav-header">SISTEMA</li>
+            <li class="nav-item">
+              <a href="{{ route('dashboard') }}" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="{{ route('clientes.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
@@ -92,7 +98,7 @@
             <li class="nav-item">
               <a href="{{ route('materiales.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
-                <p>Materiales</p>
+                <p>Materiales</p> 
               </a>
             </li>
             <li class="nav-item">
@@ -105,12 +111,6 @@
               <a href="{{ route('ordenes_rodillos.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-file"></i>
                 <p>Ordenes rodillos</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('procesos_ordenes.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Procesos Ordenes</p>
               </a>
             </li>
             <li class="nav-item">
@@ -184,7 +184,7 @@
     <!-- /.control-sidebar -->
   </div>
   <!-- ./wrapper -->
-
+  <script src="{{asset('js/app.js')}}"></script> 
   <!-- jQuery -->
   <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -227,6 +227,8 @@
   <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('dist/js/demo.js') }}"></script>
+  <script src="{{ asset('js/jquery.numeric.js') }}"></script>
+ 
   <!-- page script -->
   <script>
     $(function () {
@@ -251,7 +253,20 @@
     $('[data-mask]').inputmask()
   });
   
-  
+  //Validacion campos numericos
+  $(document).ready(function(){
+    $('[name ="piezas_fabricar"]').numeric();
+    $('[name ="tiempo_respuesta"]').numeric();
+    $('[name ="horas_teoricas"]').numeric();
+    $('[name ="piezas_reales"]').numeric();
+    $('[name ="dias_transcurridos"]').numeric();
+    $('[name ="medidas_1mm"]').numeric();
+    $('[name ="medidas_2mm"]').numeric();
+    $('[name ="medidas_largo"]').numeric();
+    $('[name ="medidas_ancho"]').numeric();
+    $('[name ="medidas_espeso"]').numeric();
+});
+
   </script>
 </body>
 

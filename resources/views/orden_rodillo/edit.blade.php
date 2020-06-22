@@ -31,7 +31,7 @@
                                 <div class="tab-content" id="custom-tabs-four-tabContent">
                                     <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-home-tab">
-                                        <div>
+                                        <div class="card-body " id="bar-parent">
                                             @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
@@ -126,9 +126,16 @@
                                                     </div>
                                                     <div class="form-group col-2">
                                                         <label for="estatus">Estatus</label>
-                                                        <input type="text" class="form-control" name="estatus"
-                                                            placeholder="Estatus" value="{{ $datos['orden']->estatus }}"
+                                                        <select class="form-control" id="estatus" name="estatus"
                                                             required>
+                                                            <option value="TRABAJANDO"
+                                                                {{ "TRABAJANDO" == $datos['orden']->estatus  ? "selected":"" }}>
+                                                                TRABAJANDO </option>
+                                                            <option value="TERMINADO"
+                                                                {{ "TERMINADO" == $datos['orden']->estatus  ? "selected":"" }}>
+                                                                TERMINADO </option>
+                                                        </select>
+
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Aceptar</button>
@@ -137,39 +144,10 @@
                                     </div>
                                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-profile-tab">
-<hr>
-<a href="http://localhost/app_produccion/public/ordenes_metales/create" class="btn bg-gradient-primary boton-agregar-listado">Agregar Registro <i class="fa fa-plus"></i></a>
-                                        <table id="example1" class="table table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Cod</th>
-                                                    <th>Nombre</th>
-                                                    <th>Estatus</th>
-                                                    <th>Piezas Terminadas</th>
-                                                    <th>Descripcion</th>                                        
-                                                    <th>Editar</th>
-                                                    <th>Eliminar</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($datos as $dato)
-                                                <tr class="odd gradeX">
-                        
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                    
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                              
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                        <div id="app">
+                                            <proceso-orden pid_orden_rodillo="{{  $datos['orden']->id }}">
+                                            </proceso-orden>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

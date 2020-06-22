@@ -44,9 +44,9 @@
                             <td>{{ $dato->descripcion }}</td>
                             <td>{{ $dato->piezas_fabricar }}</td>
                             <td>{{ $dato->horas_teoricas }}</td>
-                            <td>{{ $dato->piezas_reales }}</td>
-                            <td>{{ $dato->fecha_pedido }}</td>
-                            <td>{{ $dato->dias_transcurridos }}</td>
+                            <td>{{ $dato->piezas_reales   }}</td>
+                            <td>{{ date("d-m-Y",strtotime($dato->fecha_pedido)) }}</td>                              
+                            <td>{{ intval((abs(time() - strtotime($dato->fecha_pedido)))/86400) }}</td>
                             <td>{{ $dato->medidas_1mm }}</td>
                             <td>{{ $dato->medidas_2mm }}</td>
                             <td>{{ $dato->medidas_largo }}</td>

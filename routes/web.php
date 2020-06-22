@@ -22,6 +22,7 @@ Route::resource('productos','ProductoController');
 Route::resource('tipos_productos','TipoProductoController');
 Route::resource('tipos_servicios','TipoServicioController');
 
+Route::get('/dashboard', 'DashBoardController@index')->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');

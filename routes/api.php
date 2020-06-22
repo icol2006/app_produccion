@@ -1,5 +1,6 @@
 <?php
 
+use App\ProcesoOrden;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResources(
+	[
+		'materiales' => 'API\MaterialesController'
+	]
+);
+
+Route::apiResources(
+	[
+		'procesos_ordenes' => 'API\ProcesoOrdenController'
+	]
+);
+
+
+
+Route::get('getByIdOrdenRodillo/{id}', 'API\ProcesoOrdenController@getByIdOrdenRodillo');
+Route::get('getByIdOrdenMetal/{id}', 'API\ProcesoOrdenController@getByIdOrdenMetal');

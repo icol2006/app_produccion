@@ -51,21 +51,22 @@ class OrdenRodilloController extends Controller
     public function store(Request $request)
     {
         //$validated = $request->validated();
-       
+
         $datos = new OrdenRodillo();
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
         $datos->id_producto = $request->id_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
-        $datos->fecha_pedido = $request->fecha_pedido;        
-        $datos->fecha_comprom = $request->fecha_comprom;
-        $datos->fecha_termino_produccion = $request->fecha_termino_produccion;
+        $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido));       
+        $datos->fecha_comprom = date("Y-m-d", strtotime($request->fecha_comprom));  
+        $datos->fecha_termino_produccion =date("Y-m-d", strtotime($request->fecha_termino_produccion));  
         $datos->tiempo_respuesta = $request->tiempo_respuesta;
         $datos->estatus = $request->estatus;
         $datos->save();
 
-        return redirect('/ordenes_rodillos')->with('success', 'Datos guardados!');
+        return redirect(route('ordenes_rodillos.edit',$datos->id))->with('success', 'Datos guardados!');
+       // return redirect('/ordenes_rodillos')->with('success', 'Datos guardados!');
   
     }
 
@@ -103,15 +104,15 @@ class OrdenRodilloController extends Controller
     public function update(Request $request, $id)
     {
         //$validated = $request->validated();
-
         $datos = OrdenRodillo::find($id);
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
         $datos->id_producto = $request->id_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
-        $datos->fecha_comprom = $request->fecha_comprom;
-        $datos->fecha_termino_produccion = $request->fecha_termino_produccion;
+        $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido)); 
+        $datos->fecha_comprom = date("Y-m-d",strtotime($request->fecha_comprom)); 
+        $datos->fecha_termino_produccion = date("Y-m-d",strtotime($request->fecha_termino_produccion)); 
         $datos->tiempo_respuesta = $request->tiempo_respuesta;
         $datos->estatus = $request->estatus;
         $datos->save();

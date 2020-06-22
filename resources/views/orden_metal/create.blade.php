@@ -98,8 +98,7 @@
                             <input type="text" class="form-control" name="medidas_espeso" placeholder="Medidas Espeso" value="" required>
                         </div>
                         <div class="form-group col-2">
-                            <label for="estatus">Estatus</label>
-                            <input type="text" class="form-control" name="estatus" placeholder="Estatus" value="" required>
+                            <input type="hidden" class="form-control" name="estatus" placeholder="Estatus" value="TRABAJANDO" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Aceptar</button>

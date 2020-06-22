@@ -62,17 +62,17 @@
                         <div class="form-group col-2">
                             <label for="fecha_pedido">Fecha pedido</label>
                             <input type="text" class="form-control" name="fecha_pedido" placeholder=""
-                                value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask="" im-insert="false">
                         </div>
                         <div class="form-group col-2">
                             <label for="fecha_comprom">Fecha Comprom</label>
                             <input type="text" class="form-control" name="fecha_comprom" placeholder=""
-                                value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                                value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask="" im-insert="false">
                         </div>
                         <div class="form-group col-2">
                             <label for="fecha_termino_produccion">Termino Produccion</label>
-                            <input type="text" class="form-control" name=""
-                                placeholder="" value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask="" im-insert="false">
+                            <input type="text" class="form-control"  name="fecha_termino_produccion"
+                                placeholder="" value="" required data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask="" im-insert="false">
                         </div>
                         <div class="form-group col-2">
                             <label for="tiempo_respuesta">Tiempo Respuesta</label>
@@ -80,8 +80,7 @@
                                 placeholder="Tiempo Respuesta" value="" required>
                         </div>
                         <div class="form-group col-2">
-                            <label for="estatus">Estatus</label>
-                            <input type="text" class="form-control" name="estatus" placeholder="Estatus" value=""
+                            <input type="hidden" class="form-control" name="estatus" placeholder="Estatus" value="TRABAJANDO"
                                 required>
                         </div>
                     </div>
