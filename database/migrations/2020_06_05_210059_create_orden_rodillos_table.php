@@ -17,7 +17,8 @@ class CreateOrdenRodillosTable extends Migration
             $table->increments('id');
             $table->integer('id_cliente')->unsigned();
             $table->integer('id_tipo_servicio')->unsigned();
-            $table->integer('id_producto')->unsigned();
+            $table->integer('id_material')->unsigned();
+            $table->integer('id_tipo_producto')->unsigned();
             $table->string('descripcion')->nullable();
             $table->integer('piezas_fabricar');
             $table->date('fecha_pedido');
@@ -27,7 +28,8 @@ class CreateOrdenRodillosTable extends Migration
             $table->string('estatus');
             $table->foreign('id_cliente')->references('id')->on('cliente')->onDelete('restrict');
             $table->foreign('id_tipo_servicio')->references('id')->on('tipo_servicio')->onDelete('restrict');
-            $table->foreign('id_producto')->references('id')->on('producto')->onDelete('restrict');
+            $table->foreign('id_material')->references('id')->on('material')->onDelete('restrict');
+            $table->foreign('id_tipo_producto')->references('id')->on('tipo_producto')->onDelete('restrict');
             $table->timestamps();
         });
     }

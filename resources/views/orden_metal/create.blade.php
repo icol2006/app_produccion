@@ -40,9 +40,18 @@
                         </select>  
                     </div>
                     <div class="form-group col-6">
-                        <label for="id_producto">Producto</label>
-                        <select class="form-control" id='id_producto' name='id_producto'>
-                            @foreach($datos['productos'] as $dato )
+                        <label for="id_material">Material</label>
+                        <select class="form-control" id='id_material' name='id_material'>
+                            @foreach($datos['materiales'] as $dato )
+                            <option value="{{ $dato->id }}">
+                                {{ $dato->nombre }} </option>
+                            @endforeach
+                        </select>  
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="id_tipo_producto">Tipo Producto</label>
+                        <select class="form-control" id='id_tipo_producto' name='id_tipo_producto'>
+                            @foreach($datos['tiposProductos'] as $dato )
                             <option value="{{ $dato->id }}">
                                 {{ $dato->nombre }} </option>
                             @endforeach
@@ -98,7 +107,7 @@
                             <input type="text" class="form-control" name="medidas_espeso" placeholder="Medidas Espeso" value="" required>
                         </div>
                         <div class="form-group col-2">
-                            <input type="hidden" class="form-control" name="estatus" placeholder="Estatus" value="TRABAJANDO" required>
+                            <input type="hidden" class="form-control" name="estatus" placeholder="Estatus" value="EN PROGRAMACION" required>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Aceptar</button>

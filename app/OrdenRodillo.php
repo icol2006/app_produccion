@@ -11,7 +11,8 @@ class OrdenRodillo extends Model
     protected $fillable = [
         'id_cliente',
         'id_tipo_servicio',
-        'id_productov',
+        'id_material',
+        'id_tipo_producto',
         'descripcion',
         'piezas_fabricar',
         'fecha_pedido',
@@ -31,7 +32,11 @@ class OrdenRodillo extends Model
         return $this->hasOne(TipoServicio::class, 'id','id_tipo_servicio');
     }
 
-    function producto() {
-        return $this->hasOne(Producto::class, 'id','id_producto');
+    function material() {
+        return $this->hasOne(Material::class, 'id','id_material');
+    }
+
+    function tipoProducto() {
+        return $this->hasOne(TipoProducto::class, 'id','id_tipo_producto');
     }
 }

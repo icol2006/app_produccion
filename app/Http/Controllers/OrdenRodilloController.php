@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Material;
 use App\OrdenRodillo;
-use App\Producto;
+use App\TipoProducto;
 use App\TipoServicio;
 use Illuminate\Http\Request;
 
@@ -31,12 +32,14 @@ class OrdenRodilloController extends Controller
     {
         $clientes=Cliente::all();
         $tipoServicio=TipoServicio::all();
-        $producto=Producto::all();
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
 
         $datos = [
             'clientes'  => $clientes ,
             'tiposServicios'   => $tipoServicio,
-            'productos'   => $producto,
+            'materiales'   => $material,
+            'tiposProductos'   => $tipoProducto,
         ];
 
         return view('orden_rodillo.create', compact('datos'));
@@ -55,7 +58,8 @@ class OrdenRodilloController extends Controller
         $datos = new OrdenRodillo();
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
-        $datos->id_producto = $request->id_producto;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido));       
@@ -81,13 +85,15 @@ class OrdenRodilloController extends Controller
     {
         $clientes=Cliente::all();
         $tipoServicio=TipoServicio::all();
-        $producto=Producto::all();
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
         $orden = OrdenRodillo::find($id);
 
         $datos = [
             'clientes'  => $clientes ,
             'tiposServicios'   => $tipoServicio,
-            'productos'   => $producto,
+            'materiales'   => $material,
+            'tiposProductos'   => $tipoProducto,
             'orden'   => $orden,
         ];
 
@@ -107,7 +113,8 @@ class OrdenRodilloController extends Controller
         $datos = OrdenRodillo::find($id);
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
-        $datos->id_producto = $request->id_producto;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->fecha_pedido = date("Y-m-d",strtotime($request->fecha_pedido)); 

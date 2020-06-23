@@ -9,9 +9,9 @@ export default {
       id: "",
       nombre: "", //Esta variable, mediante v-model esta relacionada con el input del formulario
       descripcion: "", //Esta variable, mediante v-model esta relacionada con el input del formulario
-      estatus: "TRABAJANDO",
+      estatus: "PENDIENTE",
       operador: "",
-      piezas_terminadas: "",
+      piezas_terminadas: "0",
       id_orden_metal: this.pid_orden_metal,
       id_orden_rodillo: this.pid_orden_rodillo,
       update: 0 /*Esta variable contrarolará cuando es una nueva tarea o una modificación, si es 0 significará que no hemos seleccionado
@@ -143,7 +143,7 @@ export default {
       this.descripcion = "";
       this.estatus = "";
       this.operador = "";
-      this.piezas_terminadas = "";
+      this.piezas_terminadas = "0";
 
       this.update = 0;
     },
@@ -184,7 +184,8 @@ export default {
         </div>
         <div class="form-group col-2">
           <label>Estatus</label>
-          <select class="form-control" v-model="estatus" required>
+          <select class="form-control" v-model="estatus" required>            
+            <option value="PENDIENTE">PENDIENTE</option>
             <option value="TRABAJANDO">TRABAJANDO</option>
             <option value="TERMINADO">TERMINADO</option>
           </select>

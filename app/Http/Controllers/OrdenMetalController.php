@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Material;
 use App\OrdenMetal;
-use App\Producto;
+use App\TipoProducto;
 use App\TipoServicio;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class OrdenMetalController extends Controller
      */
     public function index()
     {
-        $datos = OrdenMetal::all();
+        $datos = OrdenMetal::all();    
 
         //dd($datos->first()->cliente->nombre);
 
@@ -33,12 +34,14 @@ class OrdenMetalController extends Controller
     {
         $clientes=Cliente::all();
         $tipoServicio=TipoServicio::all();
-        $producto=Producto::all();
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
 
         $datos = [
             'clientes'  => $clientes ,
             'tiposServicios'   => $tipoServicio,
-            'productos'   => $producto,
+            'materiales'   => $material,
+            'tiposProductos'   => $tipoProducto,
         ];
 
         return view('orden_metal.create', compact('datos'));
@@ -57,7 +60,8 @@ class OrdenMetalController extends Controller
         $datos = new OrdenMetal();
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
-        $datos->id_producto = $request->id_producto;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->horas_teoricas = $request->horas_teoricas;
@@ -87,13 +91,15 @@ class OrdenMetalController extends Controller
     {
         $clientes=Cliente::all();
         $tipoServicio=TipoServicio::all();
-        $producto=Producto::all();
+        $material=Material::all();
+        $tipoProducto=TipoProducto::all();
         $orden = OrdenMetal::find($id);
 
         $datos = [
             'clientes'  => $clientes ,
             'tiposServicios'   => $tipoServicio,
-            'productos'   => $producto,
+            'materiales'   => $material,
+            'tiposProductos'   => $tipoProducto,
             'orden'   => $orden,
         ];
 
@@ -114,7 +120,8 @@ class OrdenMetalController extends Controller
         $datos = OrdenMetal::find($id);
         $datos->id_cliente = $request->id_cliente;
         $datos->id_tipo_servicio = $request->id_tipo_servicio;
-        $datos->id_producto = $request->id_producto;
+        $datos->id_material = $request->id_material;
+        $datos->id_tipo_producto = $request->id_tipo_producto;
         $datos->descripcion = $request->descripcion;
         $datos->piezas_fabricar = $request->piezas_fabricar;
         $datos->horas_teoricas = $request->horas_teoricas;

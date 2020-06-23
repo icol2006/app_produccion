@@ -11,7 +11,8 @@ class OrdenMetal extends Model
     protected $fillable = [
         'id_cliente',
         'id_tipo_servicio',
-        'id_producto',
+        'id_material',
+        'id_tipo_producto',
         'descripcion',
         'piezas_fabricar',
         'horas_teoricas',
@@ -29,15 +30,19 @@ class OrdenMetal extends Model
     protected $primaryKey = 'id';
 
     function cliente() {
-        return $this->hasOne(Cliente::class, 'id','id_cliente');;
+        return $this->hasOne(Cliente::class, 'id','id_cliente');
     }
 
     function tipoServicio() {
-        return $this->hasOne(TipoServicio::class, 'id','id_tipo_servicio');;
+        return $this->hasOne(TipoServicio::class, 'id','id_tipo_servicio');
     }
 
-    function producto() {
-        return $this->hasOne(Producto::class, 'id','id_producto');;
+    function material() {
+        return $this->hasOne(Material::class, 'id','id_material');
+    }
+
+    function tipoProducto() {
+        return $this->hasOne(TipoProducto::class, 'id','id_tipo_producto');
     }
 
 }

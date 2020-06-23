@@ -68,14 +68,24 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-6">
-                                                    <label for="id_producto">Producto</label>
-                                                    <select class="form-control" id='id_producto' name='id_producto'>
-                                                        @foreach($datos['productos'] as $dato )
+                                                    <label for="id_material">Material</label>
+                                                    <select class="form-control" id='id_material' name='id_material'>
+                                                        @foreach($datos['materiales'] as $dato )
                                                         <option value="{{ $dato->id }}"
-                                                            {{ $dato->id == $datos['orden']->id_producto  ? "selected":"" }}>
+                                                            {{ $dato->id == $datos['orden']->id_material  ? "selected":"" }}>
                                                             {{ $dato->nombre }} </option>
                                                         @endforeach
-                                                    </select>
+                                                    </select> 
+                                                </div>
+                                                <div class="form-group col-6">
+                                                    <label for="id_tipo_producto">Tipo producto</label>
+                                                    <select class="form-control" id='id_tipo_producto' name='id_tipo_producto'>
+                                                        @foreach($datos['tiposProductos'] as $dato )
+                                                        <option value="{{ $dato->id }}"
+                                                            {{ $dato->id == $datos['orden']->id_tipo_producto  ? "selected":"" }}>
+                                                            {{ $dato->nombre }} </option>
+                                                        @endforeach
+                                                    </select> 
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label for="descripcion">Descripcion</label>
@@ -124,10 +134,13 @@
                                                             placeholder="Tiempo Respuesta"
                                                             value="{{ $datos['orden']->tiempo_respuesta }}" required>
                                                     </div>
-                                                    <div class="form-group col-2">
+                                                    <div class="form-group col-3">
                                                         <label for="estatus">Estatus</label>
                                                         <select class="form-control" id="estatus" name="estatus"
-                                                            required>
+                                                            required>                                                            
+                                                            <option value="EN PROGRAMACION"
+                                                            {{ "EN PROGRAMACION" == $datos['orden']->estatus  ? "selected":"" }}>
+                                                            EN PROGRAMACION </option>
                                                             <option value="TRABAJANDO"
                                                                 {{ "TRABAJANDO" == $datos['orden']->estatus  ? "selected":"" }}>
                                                                 TRABAJANDO </option>

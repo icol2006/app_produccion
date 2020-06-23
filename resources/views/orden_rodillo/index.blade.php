@@ -5,8 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">LISTADO DE ORDENES RODILLO</h3>
-                
+                <h3 class="card-title">LISTADO DE ORDENES RODILLO</h3>                
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -17,7 +16,8 @@
                             <th>Cod</th>
                             <th>Cliente</th>
                             <th>Tipo de servicio</th>
-                            <th>Producto</th>
+                            <th>Material</th>
+                            <th>Tipo Producto</th>
                             <th>Descripcion</th>
                             <th>Piezas fabricar</th>
                             <th>Fecha pedido</th>
@@ -32,11 +32,11 @@
                     <tbody>
                         @foreach($datos as $dato)
                         <tr class="odd gradeX">
-
                             <td>{{ $dato->id }}</td>
                             <td>{{ $dato->cliente->nombre }}</td>
                             <td>{{ $dato->tipoServicio->nombre }}</td>
-                            <td>{{ $dato->producto->nombre }}</td>
+                            <td>{{ $dato->material->nombre }}</td>
+                            <td>{{ $dato->tipoProducto->nombre }}</td>
                             <td>{{ $dato->descripcion }}</td>
                             <td>{{ $dato->piezas_fabricar }}</td>     
                             <td>{{ date("d-m-Y",strtotime($dato->fecha_pedido)) }}</td>
